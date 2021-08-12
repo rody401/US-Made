@@ -1,15 +1,16 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const PORT = 3000;
+const connectDB = require('database')
+
+require('dotenv').config({path: './config/.env'})
+connectDB();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 
-app.get('/', (req, res) => {
-    res.sendFile('index.ejs')
-})
+app.use('/'. homeRoutes)
 
-app.listen(PORT, ()=> {
-    console.log(`Serving on port ${PORT}`)
+app.listen(process.env.PORT, ()=> {
+    console.log('Serving is running!')
 })
